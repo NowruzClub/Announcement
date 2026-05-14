@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=1200"/>
+  <title>Sprint Four Opening — Nowruz Club</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,700;0,9..144,900;1,9..144,700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --cream:  #efebe7;
+      --terra:  #c93d14;
+      --dark:   #1a1210;
+      --mid:    #6b5f58;
+      --muted:  #a09590;
+      --green:  #5e8f54;
+      --blue:   #0d8fe5;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html, body {
+      width: 1200px;
+      height: 630px;
+      overflow: hidden;
+      background: var(--cream);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      color: var(--dark);
+    }
+
+    .banner {
+      width: 1200px;
+      height: 630px;
+      display: flex;
+    }
+
+    /* ── Left accent column ── */
+    .accent {
+      width: 104px;
+      background: var(--terra);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      padding: 40px 0;
+      flex-shrink: 0;
+    }
+
+    .accent-org {
+      color: rgba(255,255,255,0.5);
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 4px;
+      writing-mode: vertical-rl;
+      transform: rotate(180deg);
+      text-transform: uppercase;
+    }
+
+    .accent-num {
+      font-family: 'Fraunces', serif;
+      font-size: 68px;
+      font-weight: 900;
+      color: white;
+      line-height: 1;
+      letter-spacing: -3px;
+    }
+
+    /* ── Main area ── */
+    .main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 44px 56px 44px 52px;
+    }
+
+    /* Top */
+    .eyebrow {
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 5px;
+      color: var(--muted);
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .title {
+      font-family: 'Fraunces', serif;
+      font-size: 90px;
+      font-weight: 900;
+      line-height: 0.88;
+      color: var(--terra);
+      letter-spacing: -3px;
+      margin-bottom: 18px;
+    }
+
+    .title em {
+      font-style: italic;
+      color: var(--dark);
+    }
+
+    .tagline {
+      font-size: 18px;
+      color: var(--mid);
+      font-weight: 600;
+      line-height: 1.5;
+    }
+
+    /* Bottom */
+    .bottom {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 28px;
+    }
+
+    .dates {
+      display: flex;
+      gap: 36px;
+    }
+
+    .date-flag {
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 3px;
+      color: var(--muted);
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+
+    .date-main {
+      font-family: 'Fraunces', serif;
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--dark);
+      letter-spacing: -0.3px;
+    }
+
+    .date-tz {
+      font-size: 12px;
+      color: var(--muted);
+      font-weight: 700;
+      margin-top: 3px;
+      letter-spacing: 2px;
+    }
+
+    /* Telegram CTA */
+    .cta {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      background: var(--blue);
+      border-radius: 14px;
+      padding: 20px 28px;
+      color: white;
+      text-decoration: none;
+      flex-shrink: 0;
+      transition: filter 0.15s;
+    }
+
+    .cta:hover {
+      filter: brightness(1.1);
+    }
+
+    .cta-label {
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 4px;
+      opacity: 0.75;
+      text-transform: uppercase;
+      margin-bottom: 5px;
+    }
+
+    .cta-handle {
+      font-family: 'Fraunces', serif;
+      font-size: 28px;
+      font-weight: 700;
+      letter-spacing: -0.3px;
+    }
+
+    .cta-icon {
+      font-size: 32px;
+      opacity: 0.85;
+    }
+
+    /* Sprint progress strip */
+    .sprint-strip {
+      display: flex;
+      gap: 6px;
+      align-items: center;
+    }
+
+    .pip {
+      border-radius: 20px;
+      padding: 4px 10px;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .pip.done { background: rgba(94,143,84,0.13); color: var(--green); }
+    .pip.live { background: rgba(201,61,20,0.13); color: var(--terra); }
+    .pip.soon { background: rgba(160,149,144,0.13); color: var(--muted); }
+
+    .pip-dot {
+      width: 6px;
+      height: 6px;
+      background: currentColor;
+      border-radius: 50%;
+      animation: blink 1.6s ease-in-out infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50%       { opacity: 0.35; }
+    }
+  </style>
+</head>
+<body>
+  <div class="banner">
+
+    <div class="accent">
+      <div class="accent-org">Nowruz Club</div>
+      <div class="accent-num">S4</div>
+    </div>
+
+    <div class="main">
+
+      <div class="top">
+        <div class="eyebrow">Open Sprint · Fortnightly</div>
+        <div class="title">Sprint<br><em>Four</em><br>Opening</div>
+        <div class="tagline">Bring a project or a skill. Build in the open, together.</div>
+      </div>
+
+      <div class="bottom">
+
+        <div>
+          <div class="sprint-strip" style="margin-bottom: 20px;">
+            <div class="pip done">✓ S0</div>
+            <div class="pip done">✓ S1</div>
+            <div class="pip done">✓ S2</div>
+            <div class="pip done">✓ S3</div>
+            <div class="pip live"><span class="pip-dot"></span> S4</div>
+            <div class="pip soon">S5</div>
+          </div>
+
+          <div class="dates">
+            <div class="date-block">
+              <div class="date-flag">🇦🇺 Melbourne / Sydney</div>
+              <div class="date-main">Sun 17 May · Noon</div>
+              <div class="date-tz">AEDT · UTC+11</div>
+            </div>
+            <div class="date-block">
+              <div class="date-flag">🇨🇦 Toronto / Ottawa</div>
+              <div class="date-main">Sat 16 May · 10 pm</div>
+              <div class="date-tz">EDT · UTC−4</div>
+            </div>
+            <div class="date-block">
+              <div class="date-flag">🇨🇦 Vancouver</div>
+              <div class="date-main">Sat 16 May · 7 pm</div>
+              <div class="date-tz">PDT · UTC−7</div>
+            </div>
+          </div>
+        </div>
+
+        <a class="cta" href="https://t.me/nowruz_club" target="_blank" rel="noopener">
+          <div>
+            <div class="cta-label">Join on Telegram</div>
+            <div class="cta-handle">t.me/nowruz_club</div>
+          </div>
+          <div class="cta-icon">✈</div>
+        </a>
+
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>
