@@ -2,201 +2,367 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=1200"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Sprint Four Opening — Nowruz Club</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;0,9..144,900;1,9..144,300;1,9..144,700&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+
   <style>
+    :root {
+      --cream:    #efebe7;
+      --cream-dk: #e0d9d3;
+      --terra:    #c93d14;
+      --terra-dk: #a33010;
+      --dark:     #1e1511;
+      --mid:      #6b5f58;
+      --muted:    #a09590;
+      --green:    #5e8f54;
+      --blue:     #0d8fe5;
+      --blue-dk:  #0a72ba;
+    }
+
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
-    html, body {
-      width: 1200px;
-      height: 630px;
+    body {
+      background: var(--cream-dk);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 20px;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    /* subtle linen texture overlay */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        repeating-linear-gradient(
+          0deg,
+          transparent,
+          transparent 2px,
+          rgba(0,0,0,0.012) 2px,
+          rgba(0,0,0,0.012) 4px
+        );
+      pointer-events: none;
+    }
+
+    .card {
+      width: 100%;
+      max-width: 500px;
+      background: var(--cream);
+      border-radius: 20px;
       overflow: hidden;
-      background: #efebe7;
-      font-family: Arial, Helvetica, sans-serif;
-      color: #111;
+      box-shadow:
+        0 2px 4px rgba(60,30,15,0.06),
+        0 8px 20px rgba(60,30,15,0.10),
+        0 24px 48px rgba(60,30,15,0.08);
+      animation: rise 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
     }
 
-    .banner {
-      width: 1200px;
-      height: 630px;
-      display: flex;
+    @keyframes rise {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
     }
 
-    /* Left red accent column */
-    .accent {
-      width: 110px;
-      background: #c93d14;
+    /* ── Header band ── */
+    .header {
+      background: var(--terra);
+      padding: 20px 28px 18px;
       display: flex;
-      flex-direction: column;
       align-items: center;
       justify-content: space-between;
-      padding: 44px 0;
-      flex-shrink: 0;
     }
 
-    .accent-label {
-      color: rgba(255,255,255,0.55);
+    .club-name {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 5px;
+      color: rgba(255,255,255,0.75);
+      text-transform: uppercase;
+    }
+
+    .live-badge {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      background: rgba(255,255,255,0.18);
+      border: 1px solid rgba(255,255,255,0.3);
+      border-radius: 20px;
+      padding: 5px 12px 5px 9px;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 3px;
+      color: white;
+      text-transform: uppercase;
+    }
+
+    .pulse-dot {
+      width: 7px;
+      height: 7px;
+      background: white;
+      border-radius: 50%;
+      animation: pulse 1.6s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50%       { opacity: 0.5; transform: scale(0.7); }
+    }
+
+    /* ── Body ── */
+    .body {
+      padding: 32px 28px 28px;
+    }
+
+    .sprint-label {
       font-size: 11px;
       font-weight: 800;
       letter-spacing: 4px;
-      writing-mode: vertical-rl;
-      transform: rotate(180deg);
+      color: var(--muted);
       text-transform: uppercase;
-    }
-
-    .accent-num {
-      color: white;
-      font-size: 72px;
-      font-weight: 900;
-      line-height: 1;
-      letter-spacing: -3px;
-    }
-
-    /* Main body */
-    .main {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      padding: 50px 56px 50px 52px;
-    }
-
-    /* Top: title + tagline */
-    .top {}
-
-    .eyebrow {
-      font-size: 13px;
-      font-weight: 800;
-      letter-spacing: 5px;
-      color: #a09590;
-      margin-bottom: 14px;
-      text-transform: uppercase;
+      margin-bottom: 10px;
     }
 
     .title {
-      font-size: 96px;
+      font-family: 'Fraunces', serif;
+      font-size: 58px;
       font-weight: 900;
-      line-height: 0.88;
-      color: #c93d14;
-      text-transform: uppercase;
-      letter-spacing: -3px;
-      margin-bottom: 20px;
+      line-height: 0.92;
+      color: var(--dark);
+      letter-spacing: -1.5px;
+      margin-bottom: 6px;
+    }
+
+    .title em {
+      font-style: italic;
+      color: var(--terra);
     }
 
     .tagline {
-      font-size: 21px;
-      color: #5c5551;
-      font-weight: 600;
-      line-height: 1.4;
-      max-width: 560px;
-    }
-
-    /* Bottom: dates + CTA */
-    .bottom {
-      display: flex;
-      align-items: flex-end;
-      justify-content: space-between;
-      gap: 32px;
-    }
-
-    .dates {
-      display: flex;
-      gap: 40px;
-    }
-
-    .date-block {}
-
-    .date-flag {
-      font-size: 13px;
-      font-weight: 800;
-      letter-spacing: 3px;
-      color: #a09590;
-      margin-bottom: 6px;
-      text-transform: uppercase;
-    }
-
-    .date-main {
-      font-size: 26px;
-      font-weight: 900;
-      color: #111;
-      letter-spacing: -0.5px;
-    }
-
-    .date-tz {
       font-size: 14px;
-      color: #a09590;
-      font-weight: 600;
-      margin-top: 3px;
+      color: var(--mid);
+      line-height: 1.55;
+      margin-top: 14px;
+      font-weight: 500;
     }
 
-    /* Telegram CTA */
-    .cta {
-      background: linear-gradient(135deg, #0d8fe5 0%, #109be8 100%);
-      border-radius: 14px;
-      padding: 22px 30px;
-      color: white;
-      text-align: right;
+    /* ── Divider ── */
+    .divider {
+      border: none;
+      border-top: 1.5px solid var(--cream-dk);
+      margin: 24px 0;
+    }
+
+    /* ── When section ── */
+    .section-label {
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 4px;
+      color: var(--muted);
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    .time-rows {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .time-row {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .time-place {
+      font-size: 13px;
+      color: var(--mid);
+      font-weight: 600;
       flex-shrink: 0;
     }
 
-    .cta-label {
-      font-size: 12px;
+    .time-dots {
+      flex: 1;
+      border-bottom: 1.5px dotted var(--cream-dk);
+      margin-bottom: 3px;
+    }
+
+    .time-val {
+      font-family: 'Fraunces', serif;
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--dark);
+      white-space: nowrap;
+    }
+
+    .time-val small {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--muted);
+      margin-left: 5px;
+    }
+
+    /* ── Telegram CTA ── */
+    .cta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 24px;
+      background: var(--blue);
+      border-radius: 13px;
+      padding: 18px 22px;
+      color: white;
+      text-decoration: none;
+      transition: background 0.18s, transform 0.18s, box-shadow 0.18s;
+      box-shadow: 0 4px 14px rgba(13,143,229,0.35);
+    }
+
+    .cta:hover {
+      background: var(--blue-dk);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 22px rgba(13,143,229,0.40);
+    }
+
+    .cta:active {
+      transform: translateY(0);
+    }
+
+    .cta-left {}
+
+    .cta-eyebrow {
+      font-size: 10px;
       font-weight: 800;
       letter-spacing: 4px;
-      opacity: 0.8;
-      margin-bottom: 6px;
+      opacity: 0.75;
       text-transform: uppercase;
+      margin-bottom: 4px;
     }
 
     .cta-handle {
-      font-size: 30px;
-      font-weight: 900;
-      letter-spacing: 0.5px;
+      font-family: 'Fraunces', serif;
+      font-size: 26px;
+      font-weight: 700;
+      letter-spacing: -0.3px;
     }
 
-    .cta-icon {
-      font-size: 18px;
-      margin-left: 8px;
+    .cta-arrow {
+      font-size: 28px;
       opacity: 0.85;
+      transition: transform 0.18s;
     }
+
+    .cta:hover .cta-arrow {
+      transform: translateX(3px) translateY(-2px);
+    }
+
+    /* ── Sprint strip ── */
+    .sprint-strip {
+      margin-top: 22px;
+      display: flex;
+      gap: 6px;
+      align-items: center;
+    }
+
+    .sprint-pip {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      border-radius: 20px;
+      padding: 5px 10px;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .sprint-pip.done {
+      background: rgba(94,143,84,0.12);
+      color: var(--green);
+    }
+
+    .sprint-pip.live {
+      background: rgba(201,61,20,0.12);
+      color: var(--terra);
+    }
+
+    .sprint-pip.soon {
+      background: rgba(160,149,144,0.12);
+      color: var(--muted);
+    }
+
+    .pip-check { font-size: 9px; }
   </style>
 </head>
 <body>
-  <div class="banner">
 
-    <div class="accent">
-      <div class="accent-label">Nowruz Club</div>
-      <div class="accent-num">S4</div>
-    </div>
+  <div class="card">
 
-    <div class="main">
-      <div class="top">
-        <div class="eyebrow">Open Sprint · Fortnightly</div>
-        <div class="title">SPRINT<br>FOUR</div>
-        <div class="tagline">Bring a project or a skill.<br>We build in the open, together.</div>
-      </div>
-
-      <div class="bottom">
-        <div class="dates">
-          <div class="date-block">
-            <div class="date-flag">🇦🇺 Melbourne / Sydney</div>
-            <div class="date-main">SUN 17 MAY · 12:00 NOON</div>
-            <div class="date-tz">AEDT · UTC+11</div>
-          </div>
-          <div class="date-block">
-            <div class="date-flag">🇨🇦 Toronto / Ottawa</div>
-            <div class="date-main">SAT 16 MAY · 10:00 PM</div>
-            <div class="date-tz">EDT · UTC−4</div>
-          </div>
-        </div>
-
-        <div class="cta">
-          <div class="cta-label">Join on Telegram</div>
-          <div class="cta-handle">T.ME/NOWRUZ_CLUB <span class="cta-icon">✈</span></div>
-        </div>
+    <div class="header">
+      <div class="club-name">Nowruz Club</div>
+      <div class="live-badge">
+        <div class="pulse-dot"></div>
+        S4 Live
       </div>
     </div>
 
+    <div class="body">
+
+      <div class="sprint-label">Open Sprint · Fortnightly</div>
+
+      <div class="title">Sprint<br><em>Four</em><br>Opening</div>
+
+      <div class="tagline">Bring a project or a skill.<br>We build in the open, together.</div>
+
+      <hr class="divider">
+
+      <div class="section-label">When</div>
+
+      <div class="time-rows">
+        <div class="time-row">
+          <div class="time-place">🇦🇺 Melbourne / Sydney</div>
+          <div class="time-dots"></div>
+          <div class="time-val">Sun 17 May · Noon<small>AEDT</small></div>
+        </div>
+        <div class="time-row">
+          <div class="time-place">🇨🇦 Toronto / Ottawa</div>
+          <div class="time-dots"></div>
+          <div class="time-val">Sat 16 May · 10 pm<small>EDT</small></div>
+        </div>
+        <div class="time-row">
+          <div class="time-place">🇨🇦 Vancouver</div>
+          <div class="time-dots"></div>
+          <div class="time-val">Sat 16 May · 7 pm<small>PDT</small></div>
+        </div>
+      </div>
+
+      <a class="cta" href="https://t.me/nowruz_club" target="_blank" rel="noopener">
+        <div class="cta-left">
+          <div class="cta-eyebrow">Join on Telegram</div>
+          <div class="cta-handle">t.me/nowruz_club</div>
+        </div>
+        <div class="cta-arrow">✈</div>
+      </a>
+
+      <div class="sprint-strip">
+        <div class="sprint-pip done"><span class="pip-check">✓</span> S0</div>
+        <div class="sprint-pip done"><span class="pip-check">✓</span> S1</div>
+        <div class="sprint-pip done"><span class="pip-check">✓</span> S2</div>
+        <div class="sprint-pip done"><span class="pip-check">✓</span> S3</div>
+        <div class="sprint-pip live">● S4</div>
+        <div class="sprint-pip soon">S5</div>
+      </div>
+
+    </div>
   </div>
+
 </body>
 </html>
