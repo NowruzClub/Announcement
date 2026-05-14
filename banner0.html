@@ -100,18 +100,24 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: space-between;
+      justify-content: center;
       padding: 40px 0;
       flex-shrink: 0;
     }
 
-    .accent-logo {
-      width: 62px;
-      height: 62px;
-      border-radius: 50%;
+    .title-row {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      margin-bottom: 18px;
+    }
+
+    .title-logo {
+      width: 90px;
+      height: 90px;
+      border-radius: 14px;
       object-fit: cover;
-      border: 2px solid rgba(255,255,255,0.3);
-      display: block;
+      flex-shrink: 0;
     }
 
     .accent-num {
@@ -147,7 +153,6 @@
       line-height: 0.92;
       color: var(--terra);
       letter-spacing: -2px;
-      margin-bottom: 18px;
     }
 
     .title em { font-style: normal; color: var(--dark); }
@@ -373,13 +378,15 @@
 
   <div id="banner">
     <div class="accent">
-      <img src="logo.jpg" class="accent-logo" alt="Nowruz Club">
       <div class="accent-num" id="b-code"></div>
     </div>
     <div class="main">
       <div>
         <div class="eyebrow">Open Sprint · Fortnightly</div>
-        <div class="title" id="b-title"></div>
+        <div class="title-row">
+          <img src="logo.jpg" class="title-logo" alt="Nowruz Club">
+          <div class="title" id="b-title"></div>
+        </div>
         <div class="tagline" id="b-tagline"></div>
       </div>
       <div class="bottom">
@@ -444,7 +451,7 @@
 
     function render() {
       document.getElementById('b-code').textContent  = cfg.sprint.code;
-      document.getElementById('b-title').innerHTML   = `Sprint<br>${cfg.sprint.ordinal}<br>${cfg.sprint.phase}`;
+      document.getElementById('b-title').innerHTML   = `Sprint ${cfg.sprint.ordinal}<br>${cfg.sprint.phase}`;
       document.getElementById('b-tagline').textContent = cfg.tagline;
 
       document.getElementById('b-dates').innerHTML = cfg.times.map(t => `

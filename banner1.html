@@ -128,19 +128,18 @@
       justify-content: space-between;
     }
 
-    .header-left {
+    .title-row {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 16px;
+      margin-bottom: 6px;
     }
 
-    .header-logo {
-      width: 30px;
-      height: 30px;
-      border-radius: 50%;
+    .title-logo {
+      width: 62px;
+      height: 62px;
+      border-radius: 11px;
       object-fit: cover;
-      border: 1.5px solid rgba(255,255,255,0.35);
-      display: block;
       flex-shrink: 0;
     }
 
@@ -194,7 +193,6 @@
       line-height: 0.95;
       color: var(--dark);
       letter-spacing: -1px;
-      margin-bottom: 6px;
     }
     .title em { font-style: normal; color: var(--terra); }
 
@@ -444,10 +442,7 @@
 
     <div id="banner">
       <div class="card-header">
-        <div class="header-left">
-          <img src="logo.jpg" class="header-logo" alt="Nowruz Club">
-          <div class="club-name" id="b-club"></div>
-        </div>
+        <div class="club-name" id="b-club"></div>
         <div class="live-badge">
           <div class="pulse-dot"></div>
           <span id="b-badge"></span>
@@ -455,7 +450,10 @@
       </div>
       <div class="card-body">
         <div class="sprint-label">Open Sprint · Fortnightly</div>
-        <div class="title" id="b-title"></div>
+        <div class="title-row">
+          <img src="logo.jpg" class="title-logo" alt="Nowruz Club">
+          <div class="title" id="b-title"></div>
+        </div>
         <div class="tagline" id="b-tagline"></div>
         <hr class="divider">
         <div class="section-label">When</div>
@@ -519,7 +517,7 @@
     function render() {
       document.getElementById('b-club').textContent  = cfg.club;
       document.getElementById('b-badge').textContent  = `${cfg.sprint.code} Live`;
-      document.getElementById('b-title').innerHTML    = `Sprint<br>${cfg.sprint.ordinal}<br>${cfg.sprint.phase}`;
+      document.getElementById('b-title').innerHTML    = `Sprint ${cfg.sprint.ordinal}<br>${cfg.sprint.phase}`;
       document.getElementById('b-tagline').textContent = cfg.tagline;
 
       document.getElementById('b-times').innerHTML = cfg.times.map(t => `
