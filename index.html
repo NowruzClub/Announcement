@@ -1,372 +1,238 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Sprint Four Opening</title>
+  <title>Nowruz Club · Banners</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
   <style>
-    *{
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
+    :root {
+      --cream:  #efebe7;
+      --page:   #ddd6d0;
+      --terra:  #c93d14;
+      --dark:   #1a1210;
+      --mid:    #6b5f58;
+      --muted:  #a09590;
+      --green:  #5e8f54;
+      --border: rgba(0,0,0,0.08);
     }
 
-    body{
-      background:#efebe7;
-      font-family: Arial, Helvetica, sans-serif;
-      color:#111;
-      display:flex;
-      justify-content:center;
-      padding:40px 20px;
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: var(--page);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      color: var(--dark);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      padding: 56px 24px 80px;
     }
 
-    .poster{
-      width:900px;
-      background:#efebe7;
+    .page {
+      width: 100%;
+      max-width: 560px;
     }
 
-    .title{
-      font-size:74px;
-      font-weight:900;
-      letter-spacing:2px;
-      color:#c93d14;
-      text-transform:uppercase;
-      margin-bottom:40px;
+    /* ── Header ── */
+    .header {
+      margin-bottom: 40px;
     }
 
-    .description{
-      font-size:30px;
-      line-height:1.5;
-      margin-bottom:40px;
-      max-width:820px;
+    .org {
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 5px;
+      color: var(--muted);
+      text-transform: uppercase;
+      margin-bottom: 10px;
     }
 
-    .description strong{
-      font-weight:800;
+    .page-title {
+      font-size: 32px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      color: var(--dark);
+      margin-bottom: 10px;
     }
 
-    .divider{
-      border:none;
-      border-top:2px solid #ddd3cc;
-      margin:30px 0;
+    .page-desc {
+      font-size: 14px;
+      color: var(--mid);
+      line-height: 1.6;
+      font-weight: 500;
     }
 
-    .section-title{
-      color:#c93d14;
-      font-size:20px;
-      letter-spacing:5px;
-      font-weight:800;
-      margin-bottom:30px;
+    .page-desc code {
+      font-family: 'SF Mono', 'Fira Code', monospace;
+      font-size: 12px;
+      background: rgba(0,0,0,0.07);
+      border-radius: 4px;
+      padding: 1px 5px;
+      color: var(--terra);
     }
 
-    .schedule-row{
-      display:flex;
-      justify-content:space-between;
-      align-items:flex-start;
-      margin-bottom:36px;
-      gap:20px;
+    /* ── Banner cards ── */
+    .banner-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 32px;
     }
 
-    .location{
-      font-size:34px;
-      display:flex;
-      align-items:center;
-      gap:16px;
+    .banner-card {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      background: var(--cream);
+      border-radius: 14px;
+      padding: 20px 22px;
+      text-decoration: none;
+      color: inherit;
+      border: 1.5px solid transparent;
+      transition: border-color 0.15s, box-shadow 0.15s, transform 0.15s;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.06), 0 4px 12px rgba(0,0,0,0.06);
     }
 
-    .time-block{
-      text-align:right;
+    .banner-card:hover {
+      border-color: var(--terra);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.08), 0 8px 20px rgba(0,0,0,0.08);
+      transform: translateY(-2px);
     }
 
-    .time-main{
-      font-size:44px;
-      font-weight:900;
-      letter-spacing:1px;
+    .banner-card:active { transform: translateY(0); }
+
+    .card-thumb {
+      width: 56px;
+      height: 36px;
+      border-radius: 6px;
+      background: var(--terra);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      color: rgba(255,255,255,0.9);
     }
 
-    .timezone{
-      margin-top:6px;
-      color:#8f8780;
-      font-size:20px;
+    .card-thumb.wide {
+      background: linear-gradient(135deg, var(--terra) 30%, #e85530);
     }
 
-    .telegram{
-      margin:40px 0 50px;
-      background:linear-gradient(90deg,#0d8fe5,#109be8);
-      border-radius:14px;
-      padding:26px 32px;
-      color:white;
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
+    .card-thumb.card {
+      background: linear-gradient(135deg, #3a2e28, #5c4e45);
     }
 
-    .telegram-small{
-      font-size:18px;
-      letter-spacing:4px;
-      opacity:.9;
-      margin-bottom:8px;
-      font-weight:700;
+    .card-info { flex: 1; }
+
+    .card-name {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 3px;
     }
 
-    .telegram-link{
-      font-size:54px;
-      font-weight:900;
-      letter-spacing:1px;
+    .card-meta {
+      font-size: 12px;
+      color: var(--muted);
+      font-weight: 500;
     }
 
-    .telegram-icon{
-      font-size:48px;
+    .card-arrow {
+      font-size: 18px;
+      color: var(--muted);
+      transition: color 0.15s, transform 0.15s;
     }
 
-    .timeline-title{
-      font-size:22px;
-      letter-spacing:6px;
-      color:#8f8780;
-      margin-bottom:18px;
-      font-weight:700;
+    .banner-card:hover .card-arrow {
+      color: var(--terra);
+      transform: translateX(3px);
     }
 
-    .timeline-item{
-      background:#f4f1ee;
-      border:2px solid #ddd4cd;
-      border-radius:12px;
-      padding:24px 28px;
-      margin-bottom:16px;
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
+    /* ── Divider ── */
+    .divider {
+      border: none;
+      border-top: 1.5px solid rgba(0,0,0,0.08);
+      margin: 32px 0;
     }
 
-    .timeline-item.active{
-      background:#f8ece7;
-      border-color:#e3a28d;
+    /* ── Config note ── */
+    .config-note {
+      background: var(--cream);
+      border-radius: 12px;
+      padding: 18px 20px;
+      font-size: 13px;
+      color: var(--mid);
+      line-height: 1.6;
+      font-weight: 500;
     }
 
-    .timeline-left{
-      display:flex;
-      align-items:center;
-      gap:28px;
+    .config-note strong {
+      color: var(--dark);
+      font-weight: 700;
     }
 
-    .sprint-code{
-      font-size:28px;
-      font-weight:900;
-      color:#6d9963;
-      min-width:55px;
+    .config-note ul {
+      margin: 8px 0 0 16px;
     }
 
-    .active .sprint-code{
-      color:#c93d14;
-    }
-
-    .sprint-name{
-      font-size:28px;
-      font-weight:700;
-      color:#7b746e;
-    }
-
-    .active .sprint-name{
-      color:#111;
-    }
-
-    .sprint-date{
-      font-size:28px;
-      color:#918984;
-      margin-left:18px;
-    }
-
-    .active .sprint-date{
-      color:#d14b1c;
-    }
-
-    .status{
-      font-size:22px;
-      font-weight:900;
-      letter-spacing:4px;
-      color:#6d9963;
-    }
-
-    .status.soon{
-      color:#8d8580;
-    }
-
-    .status.live{
-      color:#d14b1c;
-    }
-
-    @media (max-width: 900px){
-
-      .poster{
-        width:100%;
-      }
-
-      .title{
-        font-size:52px;
-      }
-
-      .description{
-        font-size:24px;
-      }
-
-      .schedule-row{
-        flex-direction:column;
-      }
-
-      .time-block{
-        text-align:left;
-      }
-
-      .location{
-        font-size:26px;
-      }
-
-      .time-main{
-        font-size:34px;
-      }
-
-      .telegram-link{
-        font-size:32px;
-      }
-
-      .timeline-item{
-        flex-direction:column;
-        align-items:flex-start;
-        gap:16px;
-      }
-
-      .timeline-left{
-        flex-wrap:wrap;
-        gap:14px;
-      }
-
-      .sprint-name,
-      .sprint-date{
-        font-size:22px;
-      }
+    .config-note li {
+      margin-bottom: 4px;
     }
   </style>
 </head>
-
 <body>
+  <div class="page">
 
-  <div class="poster">
+    <div class="header">
+      <div class="org">Nowruz Club</div>
+      <div class="page-title">Sprint Banners</div>
+      <div class="page-desc">
+        Two banner formats for announcing sprint events.
+        Edit <code>config.js</code> to update content across both.
+      </div>
+    </div>
 
-    <div class="title">SPRINT FOUR OPENING</div>
+    <div class="banner-list">
 
-    <div class="description">
-      <strong>Nowruz Club</strong> is a fortnightly open sprint
-      community. Bring a project or a skill. We
-      build in the open, together.
+      <a class="banner-card" href="banner0.html">
+        <div class="card-thumb wide">B0</div>
+        <div class="card-info">
+          <div class="card-name">Banner 0 · Wide</div>
+          <div class="card-meta">1200 × 630 · Screenshot to share</div>
+        </div>
+        <div class="card-arrow">→</div>
+      </a>
+
+      <a class="banner-card" href="banner1.html">
+        <div class="card-thumb card">B1</div>
+        <div class="card-info">
+          <div class="card-name">Banner 1 · Card</div>
+          <div class="card-meta">Responsive · Screenshot or embed</div>
+        </div>
+        <div class="card-arrow">→</div>
+      </a>
+
     </div>
 
     <hr class="divider">
 
-    <div class="section-title">WHEN</div>
-
-    <div class="schedule-row">
-      <div class="location">🇦🇺 Melbourne / Sydney</div>
-
-      <div class="time-block">
-        <div class="time-main">SUN 17 MAY · 12:00 NOON</div>
-        <div class="timezone">AEDT · UTC+11</div>
-      </div>
-    </div>
-
-    <div class="schedule-row">
-      <div class="location">🇨🇦 Toronto / Ottawa</div>
-
-      <div class="time-block">
-        <div class="time-main">SAT 16 MAY · 10:00 PM</div>
-        <div class="timezone">EDT · UTC−4</div>
-      </div>
-    </div>
-
-    <div class="schedule-row">
-      <div class="location">🇨🇦 Vancouver</div>
-
-      <div class="time-block">
-        <div class="time-main">SAT 16 MAY · 7:00 PM</div>
-        <div class="timezone">PDT · UTC−7</div>
-      </div>
-    </div>
-
-    <div class="telegram">
-      <div>
-        <div class="telegram-small">JOIN US ON TELEGRAM</div>
-        <div class="telegram-link">T.ME/NOWRUZ_CLUB</div>
-      </div>
-
-      <div class="telegram-icon">✈</div>
-    </div>
-
-    <div class="timeline-title">SPRINT TIMELINE</div>
-
-    <div class="timeline-item">
-      <div class="timeline-left">
-        <div class="sprint-code">S0</div>
-        <div class="sprint-name">Preparation</div>
-        <div class="sprint-date">Mar 22 – Apr 4</div>
-      </div>
-
-      <div class="status">DONE</div>
-    </div>
-
-    <div class="timeline-item">
-      <div class="timeline-left">
-        <div class="sprint-code">S1</div>
-        <div class="sprint-name">Sprint One</div>
-        <div class="sprint-date">Apr 5 – Apr 18</div>
-      </div>
-
-      <div class="status">DONE</div>
-    </div>
-
-    <div class="timeline-item">
-      <div class="timeline-left">
-        <div class="sprint-code">S2</div>
-        <div class="sprint-name">Sprint Two</div>
-        <div class="sprint-date">Apr 19 – May 02</div>
-      </div>
-
-      <div class="status">DONE</div>
-    </div>
-
-    <div class="timeline-item">
-      <div class="timeline-left">
-        <div class="sprint-code">S3</div>
-        <div class="sprint-name">Sprint Three</div>
-        <div class="sprint-date">May 03 – May 16</div>
-      </div>
-
-      <div class="status">DONE</div>
-    </div>
-
-    <div class="timeline-item active">
-      <div class="timeline-left">
-        <div class="sprint-code">S4</div>
-        <div class="sprint-name">Sprint Four</div>
-        <div class="sprint-date">May 17 – May 30</div>
-      </div>
-
-      <div class="status live">● LIVE</div>
-    </div>
-
-    <div class="timeline-item">
-      <div class="timeline-left">
-        <div class="sprint-code">S5</div>
-        <div class="sprint-name">Sprint Five</div>
-        <div class="sprint-date">May 31 – June 13</div>
-      </div>
-
-      <div class="status soon">SOON</div>
+    <div class="config-note">
+      <strong>Updating for the next sprint</strong> — edit <code>config.js</code>:
+      <ul>
+        <li>Change <code>sprint.code</code>, <code>ordinal</code>, and <code>phase</code></li>
+        <li>Update <code>times</code> with the new dates</li>
+        <li>Set the new sprint to <code>status: "live"</code> in <code>sprints</code></li>
+      </ul>
+      Reload the banner page — or use the ⚙ Edit panel to tweak live.
     </div>
 
   </div>
-
 </body>
 </html>

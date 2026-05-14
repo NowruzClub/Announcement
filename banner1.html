@@ -172,15 +172,15 @@
     }
 
     .title {
-      font-family: 'Fraunces', serif;
-      font-size: 58px;
-      font-weight: 900;
-      line-height: 0.92;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 46px;
+      font-weight: 800;
+      line-height: 0.95;
       color: var(--dark);
-      letter-spacing: -1.5px;
+      letter-spacing: -1px;
       margin-bottom: 6px;
     }
-    .title em { font-style: italic; color: var(--terra); }
+    .title em { font-style: normal; color: var(--terra); }
 
     .tagline {
       font-size: 14px;
@@ -459,7 +459,7 @@
     function render() {
       document.getElementById('b-club').textContent   = cfg.club;
       document.getElementById('b-badge').textContent  = `${cfg.sprint.code} Live`;
-      document.getElementById('b-title').innerHTML    = `Sprint<br><em>${cfg.sprint.ordinal}</em><br>${cfg.sprint.phase}`;
+      document.getElementById('b-title').innerHTML    = `Sprint<br>${cfg.sprint.ordinal}<br>${cfg.sprint.phase}`;
       document.getElementById('b-tagline').textContent = cfg.tagline;
 
       document.getElementById('b-times').innerHTML = cfg.times.map(t => `
