@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sprint Four Opening</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    body{
+      background:#efebe7;
+      font-family: Arial, Helvetica, sans-serif;
+      color:#111;
+      display:flex;
+      justify-content:center;
+      padding:40px 20px;
+    }
+
+    .poster{
+      width:900px;
+      background:#efebe7;
+    }
+
+    .title{
+      font-size:74px;
+      font-weight:900;
+      letter-spacing:2px;
+      color:#c93d14;
+      text-transform:uppercase;
+      margin-bottom:40px;
+    }
+
+    .description{
+      font-size:30px;
+      line-height:1.5;
+      margin-bottom:40px;
+      max-width:820px;
+    }
+
+    .description strong{
+      font-weight:800;
+    }
+
+    .divider{
+      border:none;
+      border-top:2px solid #ddd3cc;
+      margin:30px 0;
+    }
+
+    .section-title{
+      color:#c93d14;
+      font-size:20px;
+      letter-spacing:5px;
+      font-weight:800;
+      margin-bottom:30px;
+    }
+
+    .schedule-row{
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-start;
+      margin-bottom:36px;
+      gap:20px;
+    }
+
+    .location{
+      font-size:34px;
+      display:flex;
+      align-items:center;
+      gap:16px;
+    }
+
+    .time-block{
+      text-align:right;
+    }
+
+    .time-main{
+      font-size:44px;
+      font-weight:900;
+      letter-spacing:1px;
+    }
+
+    .timezone{
+      margin-top:6px;
+      color:#8f8780;
+      font-size:20px;
+    }
+
+    .telegram{
+      margin:40px 0 50px;
+      background:linear-gradient(90deg,#0d8fe5,#109be8);
+      border-radius:14px;
+      padding:26px 32px;
+      color:white;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+    }
+
+    .telegram-small{
+      font-size:18px;
+      letter-spacing:4px;
+      opacity:.9;
+      margin-bottom:8px;
+      font-weight:700;
+    }
+
+    .telegram-link{
+      font-size:54px;
+      font-weight:900;
+      letter-spacing:1px;
+    }
+
+    .telegram-icon{
+      font-size:48px;
+    }
+
+    .timeline-title{
+      font-size:22px;
+      letter-spacing:6px;
+      color:#8f8780;
+      margin-bottom:18px;
+      font-weight:700;
+    }
+
+    .timeline-item{
+      background:#f4f1ee;
+      border:2px solid #ddd4cd;
+      border-radius:12px;
+      padding:24px 28px;
+      margin-bottom:16px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+    }
+
+    .timeline-item.active{
+      background:#f8ece7;
+      border-color:#e3a28d;
+    }
+
+    .timeline-left{
+      display:flex;
+      align-items:center;
+      gap:28px;
+    }
+
+    .sprint-code{
+      font-size:28px;
+      font-weight:900;
+      color:#6d9963;
+      min-width:55px;
+    }
+
+    .active .sprint-code{
+      color:#c93d14;
+    }
+
+    .sprint-name{
+      font-size:28px;
+      font-weight:700;
+      color:#7b746e;
+    }
+
+    .active .sprint-name{
+      color:#111;
+    }
+
+    .sprint-date{
+      font-size:28px;
+      color:#918984;
+      margin-left:18px;
+    }
+
+    .active .sprint-date{
+      color:#d14b1c;
+    }
+
+    .status{
+      font-size:22px;
+      font-weight:900;
+      letter-spacing:4px;
+      color:#6d9963;
+    }
+
+    .status.soon{
+      color:#8d8580;
+    }
+
+    .status.live{
+      color:#d14b1c;
+    }
+
+    @media (max-width: 900px){
+
+      .poster{
+        width:100%;
+      }
+
+      .title{
+        font-size:52px;
+      }
+
+      .description{
+        font-size:24px;
+      }
+
+      .schedule-row{
+        flex-direction:column;
+      }
+
+      .time-block{
+        text-align:left;
+      }
+
+      .location{
+        font-size:26px;
+      }
+
+      .time-main{
+        font-size:34px;
+      }
+
+      .telegram-link{
+        font-size:32px;
+      }
+
+      .timeline-item{
+        flex-direction:column;
+        align-items:flex-start;
+        gap:16px;
+      }
+
+      .timeline-left{
+        flex-wrap:wrap;
+        gap:14px;
+      }
+
+      .sprint-name,
+      .sprint-date{
+        font-size:22px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="poster">
+
+    <div class="title">SPRINT FOUR OPENING</div>
+
+    <div class="description">
+      <strong>Nowruz Club</strong> is a fortnightly open sprint
+      community. Bring a project or a skill. We
+      build in the open, together.
+    </div>
+
+    <hr class="divider">
+
+    <div class="section-title">WHEN</div>
+
+    <div class="schedule-row">
+      <div class="location">🇦🇺 Melbourne / Sydney</div>
+
+      <div class="time-block">
+        <div class="time-main">SUN 17 MAY · 12:00 NOON</div>
+        <div class="timezone">AEDT · UTC+11</div>
+      </div>
+    </div>
+
+    <div class="schedule-row">
+      <div class="location">🇨🇦 Toronto / Ottawa</div>
+
+      <div class="time-block">
+        <div class="time-main">SAT 16 MAY · 10:00 PM</div>
+        <div class="timezone">EDT · UTC−4</div>
+      </div>
+    </div>
+
+    <div class="schedule-row">
+      <div class="location">🇨🇦 Vancouver</div>
+
+      <div class="time-block">
+        <div class="time-main">SAT 16 MAY · 7:00 PM</div>
+        <div class="timezone">PDT · UTC−7</div>
+      </div>
+    </div>
+
+    <div class="telegram">
+      <div>
+        <div class="telegram-small">JOIN US ON TELEGRAM</div>
+        <div class="telegram-link">T.ME/NOWRUZ_CLUB</div>
+      </div>
+
+      <div class="telegram-icon">✈</div>
+    </div>
+
+    <div class="timeline-title">SPRINT TIMELINE</div>
+
+    <div class="timeline-item">
+      <div class="timeline-left">
+        <div class="sprint-code">S0</div>
+        <div class="sprint-name">Preparation</div>
+        <div class="sprint-date">Mar 22 – Apr 4</div>
+      </div>
+
+      <div class="status">DONE</div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-left">
+        <div class="sprint-code">S1</div>
+        <div class="sprint-name">Sprint One</div>
+        <div class="sprint-date">Apr 5 – Apr 18</div>
+      </div>
+
+      <div class="status">DONE</div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-left">
+        <div class="sprint-code">S2</div>
+        <div class="sprint-name">Sprint Two</div>
+        <div class="sprint-date">Apr 19 – May 02</div>
+      </div>
+
+      <div class="status">DONE</div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-left">
+        <div class="sprint-code">S3</div>
+        <div class="sprint-name">Sprint Three</div>
+        <div class="sprint-date">May 03 – May 16</div>
+      </div>
+
+      <div class="status">DONE</div>
+    </div>
+
+    <div class="timeline-item active">
+      <div class="timeline-left">
+        <div class="sprint-code">S4</div>
+        <div class="sprint-name">Sprint Four</div>
+        <div class="sprint-date">May 17 – May 30</div>
+      </div>
+
+      <div class="status live">● LIVE</div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-left">
+        <div class="sprint-code">S5</div>
+        <div class="sprint-name">Sprint Five</div>
+        <div class="sprint-date">May 31 – June 13</div>
+      </div>
+
+      <div class="status soon">SOON</div>
+    </div>
+
+  </div>
+
+</body>
+</html>
