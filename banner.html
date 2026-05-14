@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=1200"/>
+  <title>Sprint Four Opening — Nowruz Club</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html, body {
+      width: 1200px;
+      height: 630px;
+      overflow: hidden;
+      background: #efebe7;
+      font-family: Arial, Helvetica, sans-serif;
+      color: #111;
+    }
+
+    .banner {
+      width: 1200px;
+      height: 630px;
+      display: flex;
+    }
+
+    /* Left red accent column */
+    .accent {
+      width: 110px;
+      background: #c93d14;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      padding: 44px 0;
+      flex-shrink: 0;
+    }
+
+    .accent-label {
+      color: rgba(255,255,255,0.55);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 4px;
+      writing-mode: vertical-rl;
+      transform: rotate(180deg);
+      text-transform: uppercase;
+    }
+
+    .accent-num {
+      color: white;
+      font-size: 72px;
+      font-weight: 900;
+      line-height: 1;
+      letter-spacing: -3px;
+    }
+
+    /* Main body */
+    .main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 50px 56px 50px 52px;
+    }
+
+    /* Top: title + tagline */
+    .top {}
+
+    .eyebrow {
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 5px;
+      color: #a09590;
+      margin-bottom: 14px;
+      text-transform: uppercase;
+    }
+
+    .title {
+      font-size: 96px;
+      font-weight: 900;
+      line-height: 0.88;
+      color: #c93d14;
+      text-transform: uppercase;
+      letter-spacing: -3px;
+      margin-bottom: 20px;
+    }
+
+    .tagline {
+      font-size: 21px;
+      color: #5c5551;
+      font-weight: 600;
+      line-height: 1.4;
+      max-width: 560px;
+    }
+
+    /* Bottom: dates + CTA */
+    .bottom {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 32px;
+    }
+
+    .dates {
+      display: flex;
+      gap: 40px;
+    }
+
+    .date-block {}
+
+    .date-flag {
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 3px;
+      color: #a09590;
+      margin-bottom: 6px;
+      text-transform: uppercase;
+    }
+
+    .date-main {
+      font-size: 26px;
+      font-weight: 900;
+      color: #111;
+      letter-spacing: -0.5px;
+    }
+
+    .date-tz {
+      font-size: 14px;
+      color: #a09590;
+      font-weight: 600;
+      margin-top: 3px;
+    }
+
+    /* Telegram CTA */
+    .cta {
+      background: linear-gradient(135deg, #0d8fe5 0%, #109be8 100%);
+      border-radius: 14px;
+      padding: 22px 30px;
+      color: white;
+      text-align: right;
+      flex-shrink: 0;
+    }
+
+    .cta-label {
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 4px;
+      opacity: 0.8;
+      margin-bottom: 6px;
+      text-transform: uppercase;
+    }
+
+    .cta-handle {
+      font-size: 30px;
+      font-weight: 900;
+      letter-spacing: 0.5px;
+    }
+
+    .cta-icon {
+      font-size: 18px;
+      margin-left: 8px;
+      opacity: 0.85;
+    }
+  </style>
+</head>
+<body>
+  <div class="banner">
+
+    <div class="accent">
+      <div class="accent-label">Nowruz Club</div>
+      <div class="accent-num">S4</div>
+    </div>
+
+    <div class="main">
+      <div class="top">
+        <div class="eyebrow">Open Sprint · Fortnightly</div>
+        <div class="title">SPRINT<br>FOUR</div>
+        <div class="tagline">Bring a project or a skill.<br>We build in the open, together.</div>
+      </div>
+
+      <div class="bottom">
+        <div class="dates">
+          <div class="date-block">
+            <div class="date-flag">🇦🇺 Melbourne / Sydney</div>
+            <div class="date-main">SUN 17 MAY · 12:00 NOON</div>
+            <div class="date-tz">AEDT · UTC+11</div>
+          </div>
+          <div class="date-block">
+            <div class="date-flag">🇨🇦 Toronto / Ottawa</div>
+            <div class="date-main">SAT 16 MAY · 10:00 PM</div>
+            <div class="date-tz">EDT · UTC−4</div>
+          </div>
+        </div>
+
+        <div class="cta">
+          <div class="cta-label">Join on Telegram</div>
+          <div class="cta-handle">T.ME/NOWRUZ_CLUB <span class="cta-icon">✈</span></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>
