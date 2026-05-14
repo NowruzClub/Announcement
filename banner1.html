@@ -281,28 +281,67 @@
     }
     .cta:hover .cta-arrow { transform: translateX(3px) translateY(-2px); }
 
-    .sprint-strip {
-      margin-top: 22px;
+    .sprint-timeline {
+      margin-top: 20px;
       display: flex;
-      gap: 6px;
-      align-items: center;
-      flex-wrap: wrap;
+      flex-direction: column;
+      gap: 3px;
     }
 
-    .sprint-pip {
+    .tl-row {
       display: flex;
       align-items: center;
-      gap: 5px;
-      border-radius: 20px;
-      padding: 5px 10px;
-      font-size: 11px;
-      font-weight: 800;
-      letter-spacing: 1px;
-      text-transform: uppercase;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 7px 10px;
+      border-radius: 8px;
     }
-    .sprint-pip.done { background: rgba(94,143,84,0.12); color: var(--green); }
-    .sprint-pip.live { background: rgba(201,61,20,0.12); color: var(--terra); }
-    .sprint-pip.soon { background: rgba(160,149,144,0.12); color: var(--muted); }
+
+    .tl-row.live { background: rgba(201,61,20,0.07); }
+
+    .tl-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex: 1;
+      min-width: 0;
+    }
+
+    .tl-code {
+      font-size: 12px;
+      font-weight: 900;
+      min-width: 24px;
+      color: var(--muted);
+      flex-shrink: 0;
+    }
+    .tl-row.done .tl-code { color: var(--green); }
+    .tl-row.live .tl-code { color: var(--terra); }
+
+    .tl-name {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--mid);
+      flex-shrink: 0;
+    }
+    .tl-row.live .tl-name { color: var(--dark); }
+
+    .tl-dates {
+      font-size: 11px;
+      color: var(--muted);
+      font-weight: 500;
+    }
+
+    .tl-status {
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      white-space: nowrap;
+      color: var(--muted);
+      flex-shrink: 0;
+    }
+    .tl-row.done .tl-status { color: var(--green); }
+    .tl-row.live .tl-status { color: var(--terra); }
 
     /* ── Editor ── */
     .editor {
@@ -409,7 +448,7 @@
           </div>
           <div class="cta-arrow">✈</div>
         </a>
-        <div class="sprint-strip" id="b-strip"></div>
+        <div class="sprint-timeline" id="b-strip"></div>
       </div>
     </div>
 
@@ -473,12 +512,19 @@
       document.getElementById('b-cta').href = `https://t.me/${cfg.telegram}`;
       document.getElementById('b-tg').textContent = `t.me/${cfg.telegram}`;
 
-      document.getElementById('b-strip').innerHTML = cfg.sprints.map(s => {
-        const inner = s.status === 'done' ? `<span style="font-size:9px">✓</span> ${s.code}` :
-                      s.status === 'live' ? `● ${s.code}` :
-                      s.code;
-        return `<div class="sprint-pip ${s.status}">${inner}</div>`;
-      }).join('');
+      document.getElementById('b-strip').innerHTML = cfg.sprints.map(s => `
+        <div class="tl-row ${s.status}">
+          <div class="tl-left">
+            <span class="tl-code">${s.code}</span>
+            <span class="tl-name">${s.name}</span>
+            <span class="tl-dates">${s.dates}</span>
+          </div>
+          <span class="tl-status">${
+            s.status === 'done' ? '✓' :
+            s.status === 'live' ? '● Live' : 'Soon'
+          }</span>
+        </div>
+      `).join('');
     }
 
     function toggleEditor() {
