@@ -2,42 +2,98 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=1200"/>
-  <title>Sprint Four Opening — Nowruz Club</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Nowruz Club · Banner 0 (1200×630)</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,700;0,9..144,900;1,9..144,700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,700;0,9..144,900;1,9..144,700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      --cream:  #efebe7;
-      --terra:  #c93d14;
-      --dark:   #1a1210;
-      --mid:    #6b5f58;
-      --muted:  #a09590;
-      --green:  #5e8f54;
-      --blue:   #0d8fe5;
+      --cream:    #efebe7;
+      --cream-dk: #e0d9d3;
+      --page-bg:  #c8c0b9;
+      --terra:    #c93d14;
+      --dark:     #1a1210;
+      --mid:      #6b5f58;
+      --muted:    #a09590;
+      --green:    #5e8f54;
+      --blue:     #0d8fe5;
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
-    html, body {
+    body {
+      background: var(--page-bg);
+      padding: 28px 24px 40px;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      min-height: 100vh;
+    }
+
+    /* ── Toolbar ── */
+    .toolbar {
+      width: 1200px;
+      max-width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 2px;
+    }
+
+    .toolbar-hint {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+    }
+
+    .toolbar-btns { display: flex; gap: 8px; }
+
+    .btn {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      border: none;
+      border-radius: 8px;
+      padding: 8px 14px;
+      cursor: pointer;
+      transition: filter 0.15s, transform 0.12s;
+    }
+    .btn:hover   { filter: brightness(1.1); transform: translateY(-1px); }
+    .btn:active  { transform: translateY(0); }
+    .btn:disabled { opacity: 0.55; cursor: wait; transform: none; }
+
+    .btn-edit {
+      background: rgba(255,255,255,0.14);
+      color: rgba(255,255,255,0.7);
+    }
+    .btn-edit.open {
+      background: rgba(201,61,20,0.25);
+      color: #ffb49a;
+    }
+    .btn-dl {
+      background: var(--terra);
+      color: white;
+    }
+
+    /* ── Banner ── */
+    #banner {
       width: 1200px;
       height: 630px;
       overflow: hidden;
       background: var(--cream);
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      color: var(--dark);
-    }
-
-    .banner {
-      width: 1200px;
-      height: 630px;
       display: flex;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.22);
     }
 
-    /* ── Left accent column ── */
     .accent {
       width: 104px;
       background: var(--terra);
@@ -68,7 +124,6 @@
       letter-spacing: -3px;
     }
 
-    /* ── Main area ── */
     .main {
       flex: 1;
       display: flex;
@@ -77,7 +132,6 @@
       padding: 44px 56px 44px 52px;
     }
 
-    /* Top */
     .eyebrow {
       font-size: 11px;
       font-weight: 800;
@@ -97,10 +151,7 @@
       margin-bottom: 18px;
     }
 
-    .title em {
-      font-style: italic;
-      color: var(--dark);
-    }
+    .title em { font-style: italic; color: var(--dark); }
 
     .tagline {
       font-size: 18px;
@@ -109,7 +160,6 @@
       line-height: 1.5;
     }
 
-    /* Bottom */
     .bottom {
       display: flex;
       align-items: flex-end;
@@ -117,10 +167,37 @@
       gap: 28px;
     }
 
-    .dates {
+    .sprint-strip {
       display: flex;
-      gap: 36px;
+      gap: 6px;
+      align-items: center;
+      margin-bottom: 20px;
     }
+
+    .pip {
+      border-radius: 20px;
+      padding: 4px 10px;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .pip.done { background: rgba(94,143,84,0.13); color: var(--green); }
+    .pip.live { background: rgba(201,61,20,0.13); color: var(--terra); }
+    .pip.soon { background: rgba(160,149,144,0.13); color: var(--muted); }
+
+    .pip-dot {
+      width: 6px; height: 6px;
+      background: currentColor;
+      border-radius: 50%;
+      animation: blink 1.6s ease-in-out infinite;
+    }
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.35} }
+
+    .dates { display: flex; gap: 36px; }
 
     .date-flag {
       font-size: 11px;
@@ -147,7 +224,6 @@
       letter-spacing: 2px;
     }
 
-    /* Telegram CTA */
     .cta {
       display: flex;
       align-items: center;
@@ -160,10 +236,7 @@
       flex-shrink: 0;
       transition: filter 0.15s;
     }
-
-    .cta:hover {
-      filter: brightness(1.1);
-    }
+    .cta:hover { filter: brightness(1.1); }
 
     .cta-label {
       font-size: 10px;
@@ -181,106 +254,248 @@
       letter-spacing: -0.3px;
     }
 
-    .cta-icon {
-      font-size: 32px;
-      opacity: 0.85;
+    .cta-icon { font-size: 32px; opacity: 0.85; }
+
+    /* ── Editor ── */
+    .editor {
+      width: 1200px;
+      max-width: 100%;
+      background: var(--cream-dk);
+      border-radius: 12px;
+      padding: 22px 28px;
     }
 
-    /* Sprint progress strip */
-    .sprint-strip {
-      display: flex;
-      gap: 6px;
-      align-items: center;
+    .editor-grid {
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      gap: 24px;
     }
 
-    .pip {
-      border-radius: 20px;
-      padding: 4px 10px;
-      font-size: 11px;
+    .e-col { display: flex; flex-direction: column; gap: 10px; }
+
+    .e-sec-title {
+      font-size: 10px;
       font-weight: 800;
-      letter-spacing: 1px;
+      letter-spacing: 4px;
+      color: var(--muted);
       text-transform: uppercase;
-      display: flex;
-      align-items: center;
-      gap: 4px;
+      margin-bottom: 2px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid rgba(0,0,0,0.08);
     }
 
-    .pip.done { background: rgba(94,143,84,0.13); color: var(--green); }
-    .pip.live { background: rgba(201,61,20,0.13); color: var(--terra); }
-    .pip.soon { background: rgba(160,149,144,0.13); color: var(--muted); }
+    .e-field { display: flex; flex-direction: column; gap: 3px; }
 
-    .pip-dot {
-      width: 6px;
-      height: 6px;
-      background: currentColor;
-      border-radius: 50%;
-      animation: blink 1.6s ease-in-out infinite;
+    .e-field label {
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--mid);
+      letter-spacing: 0.5px;
     }
 
-    @keyframes blink {
-      0%, 100% { opacity: 1; }
-      50%       { opacity: 0.35; }
+    .e-field input,
+    .e-field select {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--dark);
+      background: var(--cream);
+      border: 1.5px solid rgba(0,0,0,0.1);
+      border-radius: 7px;
+      padding: 7px 10px;
+      outline: none;
+      width: 100%;
+      transition: border-color 0.15s;
     }
+    .e-field input:focus,
+    .e-field select:focus { border-color: var(--terra); }
+
+    .time-inputs {
+      display: grid;
+      grid-template-columns: 42px 1fr 110px 68px 56px;
+      gap: 5px;
+      margin-bottom: 5px;
+    }
+
+    .time-inputs input {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--dark);
+      background: var(--cream);
+      border: 1.5px solid rgba(0,0,0,0.1);
+      border-radius: 7px;
+      padding: 6px 7px;
+      outline: none;
+      width: 100%;
+      transition: border-color 0.15s;
+    }
+    .time-inputs input:focus { border-color: var(--terra); }
   </style>
 </head>
 <body>
-  <div class="banner">
 
-    <div class="accent">
-      <div class="accent-org">Nowruz Club</div>
-      <div class="accent-num">S4</div>
+  <div class="toolbar">
+    <span class="toolbar-hint">banner0 · 1200 × 630</span>
+    <div class="toolbar-btns">
+      <button class="btn btn-edit" id="btn-edit" onclick="toggleEditor()">⚙ Edit</button>
+      <button class="btn btn-dl" onclick="downloadPNG()">↓ Download PNG</button>
     </div>
+  </div>
 
+  <div id="banner">
+    <div class="accent">
+      <div class="accent-org" id="b-club"></div>
+      <div class="accent-num" id="b-code"></div>
+    </div>
     <div class="main">
-
-      <div class="top">
+      <div>
         <div class="eyebrow">Open Sprint · Fortnightly</div>
-        <div class="title">Sprint<br><em>Four</em><br>Opening</div>
-        <div class="tagline">Bring a project or a skill. Build in the open, together.</div>
+        <div class="title" id="b-title"></div>
+        <div class="tagline" id="b-tagline"></div>
       </div>
-
       <div class="bottom">
-
         <div>
-          <div class="sprint-strip" style="margin-bottom: 20px;">
-            <div class="pip done">✓ S0</div>
-            <div class="pip done">✓ S1</div>
-            <div class="pip done">✓ S2</div>
-            <div class="pip done">✓ S3</div>
-            <div class="pip live"><span class="pip-dot"></span> S4</div>
-            <div class="pip soon">S5</div>
-          </div>
-
-          <div class="dates">
-            <div class="date-block">
-              <div class="date-flag">🇦🇺 Melbourne / Sydney</div>
-              <div class="date-main">Sun 17 May · Noon</div>
-              <div class="date-tz">AEDT · UTC+11</div>
-            </div>
-            <div class="date-block">
-              <div class="date-flag">🇨🇦 Toronto / Ottawa</div>
-              <div class="date-main">Sat 16 May · 10 pm</div>
-              <div class="date-tz">EDT · UTC−4</div>
-            </div>
-            <div class="date-block">
-              <div class="date-flag">🇨🇦 Vancouver</div>
-              <div class="date-main">Sat 16 May · 7 pm</div>
-              <div class="date-tz">PDT · UTC−7</div>
-            </div>
-          </div>
+          <div class="sprint-strip" id="b-strip"></div>
+          <div class="dates" id="b-dates"></div>
         </div>
-
-        <a class="cta" href="https://t.me/nowruz_club" target="_blank" rel="noopener">
+        <a class="cta" id="b-cta" href="#" target="_blank" rel="noopener">
           <div>
             <div class="cta-label">Join on Telegram</div>
-            <div class="cta-handle">t.me/nowruz_club</div>
+            <div class="cta-handle" id="b-tg"></div>
           </div>
           <div class="cta-icon">✈</div>
         </a>
-
       </div>
     </div>
-
   </div>
+
+  <div class="editor" id="editor" style="display:none">
+    <div class="editor-grid">
+      <div class="e-col">
+        <div class="e-sec-title">Sprint</div>
+        <div class="e-field">
+          <label>Code (accent column)</label>
+          <input type="text" id="f-code" oninput="cfg.sprint.code=this.value;render()">
+        </div>
+        <div class="e-field">
+          <label>Ordinal (title)</label>
+          <input type="text" id="f-ordinal" oninput="cfg.sprint.ordinal=this.value;render()">
+        </div>
+        <div class="e-field">
+          <label>Phase (title)</label>
+          <input type="text" id="f-phase" oninput="cfg.sprint.phase=this.value;render()">
+        </div>
+        <div class="e-field">
+          <label>Active sprint</label>
+          <select id="f-active" onchange="setActive(this.value);render()"></select>
+        </div>
+        <div class="e-field">
+          <label>Tagline</label>
+          <input type="text" id="f-tagline" oninput="cfg.tagline=this.value;render()">
+        </div>
+        <div class="e-field">
+          <label>Telegram handle</label>
+          <input type="text" id="f-telegram" oninput="cfg.telegram=this.value;render()">
+        </div>
+      </div>
+      <div class="e-col">
+        <div class="e-sec-title">Times &nbsp;<small style="font-size:9px;letter-spacing:2px;opacity:.6">FLAG · PLACE · DAY · TIME · TZ</small></div>
+        <div id="times-editor"></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="config.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+  <script>
+    let cfg = JSON.parse(JSON.stringify(CONFIG));
+    let editorOpen = false;
+
+    function render() {
+      document.getElementById('b-club').textContent  = cfg.club;
+      document.getElementById('b-code').textContent  = cfg.sprint.code;
+      document.getElementById('b-title').innerHTML   = `Sprint<br><em>${cfg.sprint.ordinal}</em><br>${cfg.sprint.phase}`;
+      document.getElementById('b-tagline').textContent = cfg.tagline;
+
+      document.getElementById('b-dates').innerHTML = cfg.times.map(t => `
+        <div class="date-block">
+          <div class="date-flag">${t.flag} ${t.place}</div>
+          <div class="date-main">${t.day} · ${t.time}</div>
+          <div class="date-tz">${t.tz} · ${t.utc}</div>
+        </div>
+      `).join('');
+
+      document.getElementById('b-cta').href = `https://t.me/${cfg.telegram}`;
+      document.getElementById('b-tg').textContent = `t.me/${cfg.telegram}`;
+
+      document.getElementById('b-strip').innerHTML = cfg.sprints.map(s => {
+        const inner = s.status === 'done' ? `✓ ${s.code}` :
+                      s.status === 'live' ? `<span class="pip-dot"></span> ${s.code}` :
+                      s.code;
+        return `<div class="pip ${s.status}">${inner}</div>`;
+      }).join('');
+    }
+
+    function toggleEditor() {
+      editorOpen = !editorOpen;
+      document.getElementById('editor').style.display = editorOpen ? 'block' : 'none';
+      document.getElementById('btn-edit').classList.toggle('open', editorOpen);
+      document.getElementById('btn-edit').textContent = editorOpen ? '✕ Close' : '⚙ Edit';
+      if (editorOpen) populateEditor();
+    }
+
+    function populateEditor() {
+      document.getElementById('f-code').value    = cfg.sprint.code;
+      document.getElementById('f-ordinal').value = cfg.sprint.ordinal;
+      document.getElementById('f-phase').value   = cfg.sprint.phase;
+      document.getElementById('f-tagline').value  = cfg.tagline;
+      document.getElementById('f-telegram').value = cfg.telegram;
+
+      document.getElementById('f-active').innerHTML = cfg.sprints.map(s =>
+        `<option value="${s.code}"${s.status==='live'?' selected':''}>${s.code} – ${s.name}</option>`
+      ).join('');
+
+      document.getElementById('times-editor').innerHTML = cfg.times.map((t, i) => `
+        <div class="time-inputs">
+          <input type="text" value="${t.flag}"  title="Flag emoji" oninput="cfg.times[${i}].flag=this.value;render()">
+          <input type="text" value="${t.place}" title="Place"      oninput="cfg.times[${i}].place=this.value;render()">
+          <input type="text" value="${t.day}"   title="Day"        oninput="cfg.times[${i}].day=this.value;render()">
+          <input type="text" value="${t.time}"  title="Time"       oninput="cfg.times[${i}].time=this.value;render()">
+          <input type="text" value="${t.tz}"    title="TZ"         oninput="cfg.times[${i}].tz=this.value;render()">
+        </div>
+      `).join('');
+    }
+
+    function setActive(activeCode) {
+      let found = false;
+      cfg.sprints = cfg.sprints.map(s => {
+        if (s.code === activeCode) { found = true; return {...s, status: 'live'}; }
+        return {...s, status: found ? 'soon' : 'done'};
+      });
+    }
+
+    async function downloadPNG() {
+      const btn = document.querySelector('.btn-dl');
+      btn.textContent = '⏳ Generating…';
+      btn.disabled = true;
+      try {
+        await document.fonts.ready;
+        const canvas = await html2canvas(document.getElementById('banner'), {
+          scale: 1, useCORS: true, allowTaint: true, logging: false,
+          width: 1200, height: 630, backgroundColor: null,
+        });
+        const a = document.createElement('a');
+        a.download = `nowruz-${cfg.sprint.code.toLowerCase()}-${cfg.sprint.phase.toLowerCase()}.png`;
+        a.href = canvas.toDataURL('image/png');
+        a.click();
+      } finally {
+        btn.textContent = '↓ Download PNG';
+        btn.disabled = false;
+      }
+    }
+
+    render();
+  </script>
 </body>
 </html>
