@@ -48,8 +48,7 @@
     .toolbar-hint {
       font-size: 11px;
       font-weight: 700;
-      letter-spacing: 3px;
-      text-transform: uppercase;
+      letter-spacing: 0.2px;
       color: rgba(255,255,255,0.4);
     }
 
@@ -59,8 +58,7 @@
       font-family: 'Plus Jakarta Sans', sans-serif;
       font-size: 11px;
       font-weight: 800;
-      letter-spacing: 2px;
-      text-transform: uppercase;
+      letter-spacing: 0;
       border: none;
       border-radius: 8px;
       padding: 8px 14px;
@@ -123,7 +121,7 @@
     }
 
     .accent-num {
-      font-family: 'Fraunces', serif;
+      font-family: 'Plus Jakarta Sans', sans-serif;
       font-size: 68px;
       font-weight: 900;
       color: white;
@@ -142,9 +140,8 @@
     .eyebrow {
       font-size: 11px;
       font-weight: 800;
-      letter-spacing: 5px;
+      letter-spacing: 0.3px;
       color: var(--muted);
-      text-transform: uppercase;
       margin-bottom: 12px;
     }
 
@@ -155,7 +152,6 @@
       line-height: 0.92;
       color: var(--terra);
       letter-spacing: -1px;
-      font-variant: small-caps;
     }
 
     .title em { font-style: normal; color: var(--dark); }
@@ -225,8 +221,7 @@
     .tl-status {
       font-size: 10px;
       font-weight: 800;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
+      letter-spacing: 0;
       white-space: nowrap;
       color: var(--muted);
     }
@@ -238,14 +233,13 @@
     .date-flag {
       font-size: 11px;
       font-weight: 800;
-      letter-spacing: 3px;
+      letter-spacing: 0.2px;
       color: var(--muted);
-      text-transform: uppercase;
       margin-bottom: 6px;
     }
 
     .date-main {
-      font-family: 'Fraunces', serif;
+      font-family: 'Plus Jakarta Sans', sans-serif;
       font-size: 22px;
       font-weight: 700;
       color: var(--dark);
@@ -257,7 +251,7 @@
       color: var(--muted);
       font-weight: 700;
       margin-top: 3px;
-      letter-spacing: 2px;
+      letter-spacing: 0;
     }
 
     .cta {
@@ -277,14 +271,13 @@
     .cta-label {
       font-size: 10px;
       font-weight: 800;
-      letter-spacing: 4px;
+      letter-spacing: 0.2px;
       opacity: 0.75;
-      text-transform: uppercase;
       margin-bottom: 5px;
     }
 
     .cta-handle {
-      font-family: 'Fraunces', serif;
+      font-family: 'Plus Jakarta Sans', sans-serif;
       font-size: 28px;
       font-weight: 700;
       letter-spacing: -0.3px;
@@ -312,9 +305,8 @@
     .e-sec-title {
       font-size: 10px;
       font-weight: 800;
-      letter-spacing: 4px;
+      letter-spacing: 0.2px;
       color: var(--muted);
-      text-transform: uppercase;
       margin-bottom: 2px;
       padding-bottom: 8px;
       border-bottom: 1px solid rgba(0,0,0,0.08);
@@ -454,7 +446,7 @@
 
     function render() {
       document.getElementById('b-code').textContent  = cfg.sprint.code;
-      document.getElementById('b-title').innerHTML   = `Sprint ${cfg.sprint.ordinal}<br>${cfg.sprint.phase}`;
+      document.getElementById('b-title').innerHTML   = `sprint ${cfg.sprint.ordinal.toLowerCase()}<br>${cfg.sprint.phase.toLowerCase()}`;
       document.getElementById('b-tagline').textContent = cfg.tagline;
 
       document.getElementById('b-dates').innerHTML = cfg.times.map(t => `
@@ -477,7 +469,7 @@
           </div>
           <span class="tl-status">${
             s.status === 'done' ? '✓' :
-            s.status === 'live' ? '● Live' : 'Soon'
+            s.status === 'live' ? '● live' : 'soon'
           }</span>
         </div>
       `).join('');
